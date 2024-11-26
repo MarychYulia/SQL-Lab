@@ -11,8 +11,6 @@ FROM
 
 -- всі працівники та їх менеджери
 SELECT 
-WHERE 
-    position IN ('CEO', 'Manager')
     e.employee_id AS "Employee ID",
     e.last_name AS "Employee Last Name",
     e.first_name AS "Employee First Name",
