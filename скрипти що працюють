@@ -1,0 +1,127 @@
+-- список всіх менеджерів 
+SELECT 
+    employee_id AS "Manager ID",
+    last_name AS "Manager Last Name",
+    first_name AS "Manager First Name",
+    position AS "Manager Title",
+    employment_date AS "Manager Hire Date"
+FROM 
+    employee;
+
+
+-- всі працівники та їх менеджери
+SELECT 
+WHERE 
+    position IN ('CEO', 'Manager')
+    e.employee_id AS "Employee ID",
+    e.last_name AS "Employee Last Name",
+    e.first_name AS "Employee First Name",
+    e.position AS "Employee Title",
+    e.employment_date AS "Hire Date",
+    m.employee_id AS "Manager ID",
+    m.last_name AS "Manager Last Name",
+    m.first_name AS "Manager First Name",
+    m.position AS "Manager Title",
+    m.employment_date AS "Manager Hire Date"
+FROM 
+    Employee e
+JOIN 
+    Employee m ON e.manager_id = m.employee_id;
+    
+    
+    
+    
+    -- всі працівникик та дартаменти
+SELECT 
+    e.employee_id AS "Employee ID",
+    e.last_name AS "Employee Last Name",
+    e.first_name AS "Employee First Name",
+    e.position AS "Employee Title",
+    d.department_name AS "Department Name"
+FROM 
+    Employee 
+JOIN 
+    Department d ON e.department_id = d.department_id;
+
+
+
+    -- працівники , що мають продажі 
+SELECT 
+    e.employee_id AS "Employee ID",
+    e.last_name AS "Employee Last Name",
+    e.first_name AS "Employee First Name",
+    e.position AS "Employee Title",
+    i.invoice_id AS "Invoice",
+    i.transaction_moment AS "Transaction Moment"
+FROM 
+    Employee e
+JOIN 
+    Invoice i ON e.employee_id = i.employee_id;
+
+
+
+
+
+-- працівники, що зробили продажі, з natural join
+SELECT 
+    employee_id AS "Employee ID",
+    last_name AS "Employee Last Name",
+    first_name AS "Employee First Name",
+    position AS "Employee Title",
+    invoice_id AS "Invoice",
+    transaction_moment AS "Transaction Moment"
+FROM 
+    Employee
+NATURAL JOIN 
+    Invoice;
+    
+    
+    
+    
+    
+
+    
+    --  структура компанії 
+SELECT 
+    e.employee_id AS "Employee ID",
+    e.last_name AS "Employee Last Name",
+    e.first_name AS "Employee First Name",
+    e.position AS "Employee Title",
+    d.department_name AS "Department Name"
+FROM 
+    Employee e
+JOIN 
+    Department d ON e.department_id = d.department_id;
+
+    
+    
+    
+    -- працівникики - консультанти
+SELECT 
+    employee_id AS "Employee ID",
+    last_name AS "Last Name",
+    first_name AS "First Name",
+    'Can Consult' AS "Consulting Status"
+FROM 
+    Employee
+WHERE 
+    position = 'Consultant'
+
+UNION
+
+SELECT 
+    employee_id AS "Employee ID",
+    last_name AS "Last Name",
+    first_name AS "First Name",
+    'Cannot Consult' AS "Consulting Status"
+FROM 
+    Employee
+WHERE 
+    position != 'Consultant';
+    
+ 
+ 
+
+
+
+    
